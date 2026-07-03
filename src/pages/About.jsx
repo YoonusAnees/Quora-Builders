@@ -54,9 +54,9 @@ export default function About() {
       <section className="relative bg-primary text-white py-20 overflow-hidden">
         {/* Subtle decorative construction pattern background */}
         <div className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none select-none"
-             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200')` }} />
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left space-y-4">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -66,7 +66,7 @@ export default function About() {
             <span className="w-8 h-1 bg-accent rounded" />
             <span className="text-accent uppercase tracking-widest text-xs font-bold">About Our Company</span>
           </motion.div>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function About() {
           >
             A Legacy of <span className="text-accent">Excellence</span>
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -103,9 +103,9 @@ export default function About() {
                 Our History & Commitment
               </h2>
               <div className="h-1 bg-accent w-20 rounded" />
-              
+
               <p className="text-neutral-muted leading-relaxed text-sm md:text-base">
-                Established in 2011, Quora Builders began as a local civil contracting firm. Over a decade of hard work, continuous safety diligence, and reliable completion rates expanded us into a full-service commercial and residential developer operating nationwide.
+                Established in 2019, Quora Builders began as a local civil contracting firm. Over a decade of hard work, continuous safety diligence, and reliable completion rates expanded us into a full-service commercial and residential developer operating nationwide.
               </p>
               <p className="text-neutral-muted leading-relaxed text-sm md:text-base">
                 We believe a building is more than just concrete and steel beams. It's a hub for businesses, a sanctuary for families, and an investment in local infrastructure. That's why we control every step of the pre-construction planning, site excavation, concrete pouring, and final finishing to deliver perfect outcomes.
@@ -127,15 +127,15 @@ export default function About() {
               className="relative"
             >
               <div className="rounded-lg overflow-hidden shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" 
-                  alt="Modern office architectural planning" 
+                <img
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800"
+                  alt="Modern office architectural planning"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-accent text-primary p-6 rounded-lg shadow-lg hidden sm:block border-2 border-white">
                 <p className="text-sm font-extrabold uppercase">Projects Handled</p>
-                <p className="text-4xl font-black mt-1">350+</p>
+                <p className="text-4xl font-black mt-1">20+</p>
               </div>
             </motion.div>
           </div>
@@ -190,9 +190,9 @@ export default function About() {
       {/* Company Values Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle 
-            subtitle="WHAT DRIVES US" 
-            title="Our Foundational Values" 
+          <SectionTitle
+            subtitle="WHAT DRIVES US"
+            title="Our Foundational Values"
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -217,7 +217,7 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-neutral-light border-t border-gray-100">
+      {/* <section className="py-20 bg-neutral-light border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle 
             subtitle="THE LEADERSHIP TEAM" 
@@ -255,7 +255,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </PageWrapper>
   );
 }
