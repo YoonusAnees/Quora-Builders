@@ -63,7 +63,7 @@ export default function Navbar() {
                   <span className="text-yellow-600"> BUILDERS</span>
                 </h1>
                 <p className="text-sm font-bold text-gray-500">
-                  Construction / Real Estate
+                  Construction
                 </p>
               </div>
             </Link>
