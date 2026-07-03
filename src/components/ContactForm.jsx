@@ -40,9 +40,15 @@ ${formData.message}`;
       message
     )}`;
 
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
+    // Open WhatsApp immediately in response to user click to prevent browser popup blocking
+    try {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    } catch (err) {
+      // Fallback redirect in same window if blocked or fails
+      window.location.href = whatsappUrl;
+    }
 
+    setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
 
@@ -57,7 +63,7 @@ ${formData.message}`;
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 800);
+    }, 500);
   };
 
   return (
