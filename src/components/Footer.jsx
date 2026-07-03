@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Hammer, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import logo from "../assets/Logo.webp";
 
 const Facebook = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -7,9 +8,14 @@ const Facebook = (props) => (
   </svg>
 );
 
-const Twitter = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+const Tiktok = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.234V2h-3.12v12.365c0 1.479-1.18 2.68-2.636 2.68a2.64 2.64 0 0 1-2.636-2.68 2.64 2.64 0 0 1 2.636-2.68c.273 0 .537.042.785.12V8.64a5.84 5.84 0 0 0-.785-.054A5.79 5.79 0 0 0 4.27 14.37 5.79 5.79 0 0 0 10.063 20a5.79 5.79 0 0 0 5.793-5.63V8.096a7.89 7.89 0 0 0 4.604 1.47V6.686h-.87z" />
   </svg>
 );
 
@@ -21,13 +27,13 @@ const Instagram = (props) => (
   </svg>
 );
 
-const Linkedin = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
+// const Linkedin = (props) => (
+//   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+//     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+//     <rect x="2" y="9" width="4" height="12" />
+//     <circle cx="4" cy="4" r="2" />
+//   </svg>
+// );
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -63,8 +69,9 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="bg-accent p-1.5 rounded text-primary">
-                <Hammer className="h-5 w-5" />
+              <div className="h-10 w-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center shadow-sm">
+                {/* <Hammer className="h-5 w-5" /> */}
+                <img src={logo} alt="Logo" className="h-full w-full" />
               </div>
               <span className="font-extrabold text-lg tracking-wider text-white">
                 QUORA<span className="text-accent">BUILDERS</span>
@@ -76,10 +83,10 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex space-x-4">
               {[
-                { icon: Facebook, href: '#' },
-                { icon: Twitter, href: '#' },
-                { icon: Instagram, href: '#' },
-                { icon: Linkedin, href: '#' }
+                { icon: Facebook, href: 'https://www.facebook.com/quorabuilders' },
+                { icon: Tiktok, href: 'https://www.tiktok.com/@quorabuilders?_r=1&_t=ZS-97iMut67ymw' },
+                { icon: Instagram, href: 'https://www.instagram.com/quorabuilders' },
+                // { icon: Linkedin, href: '#' }
               ].map((social, idx) => (
                 <a
                   key={idx}
@@ -123,15 +130,15 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                <span>123 Construction Boulevard, Suite 500, Metropolis, NY 10001</span>
+                <span>Quora Builders, Akurana 20850</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
-                <a href="tel:+18005550199" className="hover:text-accent transition-colors duration-300">+1 (800) 555-0199</a>
+                <a href="tel:+940773020979" className="hover:text-accent transition-colors duration-300">+94 077 302 0979</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:info@quorabuilders.com" className="hover:text-accent transition-colors duration-300">info@quorabuilders.com</a>
+                <a href="mailto:Quorabuilders@gmail.com" className="hover:text-accent transition-colors duration-300">Quorabuilders@gmail.com</a>
               </li>
             </ul>
           </div>

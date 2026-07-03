@@ -12,22 +12,22 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Our Headquarters",
-      details: "123 Construction Boulevard, Suite 500, Metropolis, NY 10001"
+      details: "Quora Builders, Akurana 20850"
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: "Main Office: +1 (800) 555-0199 / Support: +1 (800) 555-0198"
+      details: "Main Office: +94 77 302 0979"
     },
     {
       icon: Mail,
       title: "Email Inquiries",
-      details: "Estimates: bid@quorabuilders.com / Info: info@quorabuilders.com"
+      details: "Quorabuilders@gmail.com"
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: "Mon - Fri: 8:00 AM - 6:00 PM / Sat: 9:00 AM - 1:00 PM"
+      details: "Monday - Thursday: 8:00 AM - 6:00 PM / Saturday - Sunday: 8:00 AM - 6:00 PM"
     }
   ];
 
@@ -63,9 +63,9 @@ export default function Contact() {
       {/* Sub-Hero Header */}
       <section className="relative bg-primary text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none select-none"
-             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200')` }} />
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left space-y-4">
           <div className="flex justify-center md:justify-start items-center space-x-2">
             <span className="w-8 h-1 bg-accent rounded" />
@@ -127,23 +127,23 @@ export default function Contact() {
 
       {/* Google Maps Embed Section */}
       <section className="bg-neutral-light border-t border-b border-gray-100">
-        <div className="w-full h-[450px] relative">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25279984888!2d-74.1197637307271!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-            className="w-full h-full border-0 filter grayscale contrast-[1.1]" 
-            allowFullScreen="" 
-            loading="lazy" 
+        <div className="w-full h-[450px] relative p-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.7100260696093!2d80.6165344!3d7.386356300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3433a138503cf%3A0x85fe28ffc22e94f7!2sQuora%20Builders!5e0!3m2!1sen!2slk!4v1783049209123!5m2!1sen!2slk"
+            className="w-full h-full border-0 "
+            allowFullScreen=""
+            loading="lazy"
             title="Quora Builders Office Location Map"
             referrerPolicy="no-referrer-when-downgrade"
           />
           {/* Floating Marker Card */}
-          <div className="absolute top-8 left-8 bg-primary/95 text-white p-5 rounded-lg border border-primary-light shadow-2xl hidden md:block max-w-sm">
+          {/* <div className="absolute top-8 left-8 bg-primary/95 text-white p-5 rounded-lg border border-primary-light shadow-2xl hidden md:block max-w-sm">
             <h4 className="font-extrabold text-accent text-sm tracking-wider uppercase mb-1">Our Location</h4>
             <p className="font-bold text-base mb-1">Quora Builders Plaza</p>
             <p className="text-gray-300 text-xs leading-relaxed">
               123 Construction Boulevard, Suite 500, Metropolis, NY 10001
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -159,7 +159,7 @@ export default function Contact() {
             {faqs.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div 
+                <div
                   key={idx}
                   className="border border-gray-200 rounded overflow-hidden bg-neutral-light hover:bg-white hover:border-accent transition-colors duration-300"
                 >
@@ -172,7 +172,7 @@ export default function Contact() {
                       {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4 text-accent" />}
                     </span>
                   </button>
-                  
+
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
