@@ -120,8 +120,8 @@ export default function HeroSection({
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-28 bg-gradient-to-t from-neutral-light to-transparent" />
-
+<div className="absolute bottom-0 left-0 right-0 z-10 h-40 sm:h-32 md:h-28 bg-gradient-to-t from-neutral-light to-transparent" />
+   
       {/* Scroll indicator */}
       <motion.button
         type="button"
@@ -133,9 +133,9 @@ export default function HeroSection({
             behavior: "smooth",
           })
         }
-        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center text-white/60 transition-colors duration-300 hover:text-white md:flex"
+        className="absolute bottom-[15%] md:bottom-5  left-1/2 z-20 flex -translate-x-1/2 flex-col items-center text-white/60 transition-colors duration-300 hover:text-white"
       >
-        <span className="mb-1 text-xs font-semibold uppercase tracking-wider">
+        <span className="mb-1 text-[10px] font-semibold uppercase tracking-wider sm:text-xs">
           Scroll Down
         </span>
         <ChevronDown className="h-4 w-4" />
