@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import CountUpModule from "react-countup";
 const CountUp = CountUpModule.default || CountUpModule;
 
-import { HardHat, ShieldCheck, Clock, Users, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { HardHat, ShieldCheck, Clock, Users, ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import SectionTitle from '../components/SectionTitle';
 import ServiceCard from '../components/ServiceCard';
 import ProjectCard from '../components/ProjectCard';
-import TestimonialCard from '../components/TestimonialCard';
 import PageWrapper from '../components/PageWrapper';
 
 // Services mapping
@@ -91,30 +90,6 @@ export default function Home() {
     }
   ];
 
-  // Testimonials list
-  const testimonialsData = [
-    {
-      quote: "Quora Builders exceeded all our engineering parameters. Their project management team handled the complexities of our mixed-use commercial tower flawlessly, completing it 2 weeks ahead of schedule.",
-      name: "Marcus Vance",
-      role: "CEO, Vanguard Group",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
-      rating: 5
-    },
-    {
-      quote: "Building our dream estate with Quora was an absolute breeze. They kept us informed at every concrete pour, structural layout, and finishing stage. Their craftsmanship is second to none.",
-      name: "Sophia Lindqvist",
-      role: "Homeowner",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
-      rating: 5
-    },
-    {
-      quote: "Their team's competence in historical building restoration was remarkable. They reinforced our brick facade and reinforced structural wood beams without altering the classic aesthetic.",
-      name: "David Chen",
-      role: "Operations Manager, Heritage Trust",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200",
-      rating: 5
-    }
-  ];
 
   return (
     <PageWrapper>
@@ -339,7 +314,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials (Google Reviews) Section */}
+      {/* 
+        NOTE: The Elfsight script should be added once in index.html:
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+      */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle 
@@ -347,19 +326,33 @@ export default function Home() {
             title="What Our Clients Say About Us" 
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonialsData.map((testimonial, idx) => (
-              <TestimonialCard
-                key={idx}
-                quote={testimonial.quote}
-                name={testimonial.name}
-                role={testimonial.role}
-                image={testimonial.image}
-                rating={testimonial.rating}
-                delay={idx * 0.1}
-              />
-            ))}
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col items-center justify-center w-full"
+          >
+            {/* Rating Summary Card */}
+            <div className="flex flex-col items-center justify-center text-center mb-12 bg-neutral-light border border-neutral-muted/10 rounded-2xl p-6 md:p-8 shadow-sm max-w-sm md:max-w-md w-full">
+              <div className="flex items-center gap-1.5 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 fill-accent text-accent stroke-[1.5]" />
+                ))}
+              </div>
+              <div className="text-3xl font-black text-primary mb-1">
+                Rated 4.9 / 5
+              </div>
+              <div className="text-neutral-muted font-bold text-xs md:text-sm tracking-wider uppercase">
+                Based on Google Reviews
+              </div>
+            </div>
+
+            {/* Elfsight Google Reviews Widget Container */}
+            <div className="w-full">
+              <div className="elfsight-app-0749d319-698e-497a-9a01-f2b10aae7743" data-elfsight-app-lazy></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
