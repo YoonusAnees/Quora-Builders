@@ -28,12 +28,12 @@ export default function ContactForm() {
 
     const message = `*New Quote Request*
 
-👤 Full Name: ${formData.name}
-📧 Email: ${formData.email}
-📞 Phone: ${formData.phone || "Not provided"}
-🏗️ Project Type: ${formData.projectType}
+Full Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || "Not provided"}
+Project Type: ${formData.projectType}
 
-📝 Project Details:
+Project Details:
 ${formData.message}`;
 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
