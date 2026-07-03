@@ -10,7 +10,7 @@ export default function ContactForm() {
     projectType: 'Residential',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -21,25 +21,43 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setIsSubmitting(true);
-    
-    // Simulate API request
+
+    const phoneNumber = "94761310771"; // Your WhatsApp number
+
+    const message = `*New Quote Request*
+
+👤 Full Name: ${formData.name}
+📧 Email: ${formData.email}
+📞 Phone: ${formData.phone || "Not provided"}
+🏗️ Project Type: ${formData.projectType}
+
+📝 Project Details:
+${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
     setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+
       setIsSubmitting(false);
       setIsSubmitted(true);
+
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectType: 'Residential',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        projectType: "Residential",
+        message: "",
       });
-      
-      // Reset success state after a few seconds
+
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    }, 800);
   };
 
   return (
