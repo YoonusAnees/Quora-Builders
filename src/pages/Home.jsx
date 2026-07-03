@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CountUpModule from "react-countup";
+const CountUp = CountUpModule.default || CountUpModule;
+
 import { HardHat, ShieldCheck, Clock, Users, ArrowRight, CheckCircle2 } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import SectionTitle from '../components/SectionTitle';
@@ -123,10 +126,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "350+", label: "Projects Completed" },
-              { value: "15+", label: "Years Experience" },
-              { value: "48+", label: "Active Sites" },
-              { value: "100%", label: "Safety Record" }
+              { end: 20, suffix: "+", label: "Projects Completed" },
+              { end: 7, suffix: "+", label: "Years Experience" },
+              { end: 6, suffix: "+", label: "Active Sites" },
+              { end: 100, suffix: "%", label: "Safety Record" }
             ].map((stat, i) => (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -136,7 +139,10 @@ export default function Home() {
                 key={i}
                 className="space-y-1"
               >
-                <div className="text-3xl md:text-5xl font-black text-accent">{stat.value}</div>
+                <div className="text-3xl md:text-5xl font-black text-accent">
+                  <CountUp end={stat.end} duration={2.5} enableScrollSpy scrollSpyOnce />
+                  <span>{stat.suffix}</span>
+                </div>
                 <div className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
