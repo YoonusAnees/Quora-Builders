@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Hammer, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import logo from "../assets/Logo.webp";
+import { COMPANY } from "../config/company";
 
 const Facebook = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -27,37 +28,29 @@ const Instagram = (props) => (
   </svg>
 );
 
-// const Linkedin = (props) => (
-//   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-//     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-//     <rect x="2" y="9" width="4" height="12" />
-//     <circle cx="4" cy="4" r="2" />
-//   </svg>
-// );
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    alert('Thank you for subscribing to our newsletter!');
+    alert('Thank you for subscribing to Quora Builder newsletter!');
     e.target.reset();
   };
 
   return (
     <footer className="bg-primary text-white border-t border-primary-light">
-      {/* Top Banner / Call to Action */}
+      {/* Top Banner CTA */}
       <div className="bg-accent text-primary py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div>
-            <h3 className="text-xl md:text-2xl font-black">Ready to build your dream project?</h3>
+            <h3 className="text-xl md:text-2xl font-black">Planning your dream house in Kandy?</h3>
             <p className="font-semibold text-sm md:text-base mt-1 opacity-90">Let's construct something extraordinary together.</p>
           </div>
           <Link
             to="/contact"
-            className="bg-primary hover:bg-neutral-dark text-white font-bold px-6 py-3 rounded shadow-lg transition-colors duration-300 flex items-center space-x-2 text-sm"
+            className="bg-primary hover:bg-neutral-dark text-white font-bold px-6 py-3 rounded shadow-lg transition-colors duration-300 flex items-center space-x-2 text-sm shrink-0"
           >
-            <span>Get Free Quote</span>
+            <span>Get Free BOQ Quote</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -66,33 +59,35 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          
           {/* Column 1: Brand Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="h-10 w-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center shadow-sm">
-                {/* <Hammer className="h-5 w-5" /> */}
-                <img src={logo} alt="Logo" className="h-full w-full" />
+              <div className="h-10 w-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center shadow-sm overflow-hidden">
+                <img src={logo} alt="Quora Builder Logo" className="h-full w-full object-cover" />
               </div>
               <span className="font-extrabold text-lg tracking-wider text-white">
-                QUORA<span className="text-accent">BUILDERS</span>
+                QUORA<span className="text-accent">BUILDER</span>
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Quora Builders is a premier construction firm dedicated to high-quality craftsmanship, structural integrity, and exceptional client relationships. We shape modern landscapes.
+              Quora Builder is a premier house construction and structural engineering firm in Kandy, Sri Lanka. Dedicated to high-quality craftsmanship, hillside foundation stability, and transparent client relationships.
             </p>
+            
             {/* Socials */}
             <div className="flex space-x-4">
               {[
-                { icon: Facebook, href: 'https://www.facebook.com/quorabuilders' },
-                { icon: Tiktok, href: 'https://www.tiktok.com/@quorabuilders?_r=1&_t=ZS-97iMut67ymw' },
-                { icon: Instagram, href: 'https://www.instagram.com/quorabuilders' },
-                // { icon: Linkedin, href: '#' }
+                { icon: Facebook, href: COMPANY.socials.facebook, label: 'Facebook' },
+                { icon: Tiktok, href: COMPANY.socials.tiktok, label: 'TikTok' },
+                { icon: Instagram, href: COMPANY.socials.instagram, label: 'Instagram' }
               ].map((social, idx) => (
                 <a
                   key={idx}
                   href={social.href}
-                  className="bg-primary-light hover:bg-accent hover:text-primary text-gray-300 p-2 rounded transition-colors duration-300"
-                  aria-label="Social Link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary-light hover:bg-accent hover:text-primary text-gray-300 p-2.5 rounded transition-colors duration-300"
+                  aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
                 </a>
@@ -108,9 +103,11 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'About Us', path: '/about' },
+                { name: 'House Construction Kandy', path: '/house-construction-kandy' },
+                { name: 'Construction Cost Guide 2026', path: '/house-construction-cost-kandy' },
                 { name: 'Services', path: '/services' },
-                { name: 'Projects', path: '/projects' },
+                { name: 'Project Portfolio', path: '/projects' },
+                { name: 'About Quora Builder', path: '/about' },
                 { name: 'Contact Us', path: '/contact' }
               ].map((link) => (
                 <li key={link.path}>
@@ -125,20 +122,20 @@ export default function Footer() {
           {/* Column 3: Contact Info */}
           <div>
             <h4 className="font-bold text-base uppercase tracking-wider text-white border-l-2 border-accent pl-3 mb-6">
-              Office Info
+              Kandy Office Info
             </h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                <span>Quora Builders, Akurana 20850</span>
+                <span>{COMPANY.address.formatted}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
-                <a href="tel:+940773020979" className="hover:text-accent transition-colors duration-300">+94 077 302 0979</a>
+                <a href={`tel:${COMPANY.phoneRaw}`} className="hover:text-accent transition-colors duration-300">{COMPANY.phone}</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:Quorabuilders@gmail.com" className="hover:text-accent transition-colors duration-300">Quorabuilders@gmail.com</a>
+                <a href={`mailto:${COMPANY.email}`} className="hover:text-accent transition-colors duration-300">{COMPANY.email}</a>
               </li>
             </ul>
           </div>
@@ -146,10 +143,10 @@ export default function Footer() {
           {/* Column 4: Newsletter */}
           <div>
             <h4 className="font-bold text-base uppercase tracking-wider text-white border-l-2 border-accent pl-3 mb-6">
-              Newsletter
+              Building Insights
             </h4>
             <p className="text-gray-400 text-sm mb-4">
-              Subscribe to stay updated with our latest architectural works and insights.
+              Subscribe to receive technical guides and price updates for house construction in Kandy.
             </p>
             <form onSubmit={handleSubscribe} className="space-y-2">
               <div className="relative">
@@ -168,15 +165,16 @@ export default function Footer() {
               </button>
             </form>
           </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-4 md:space-y-0">
-          <p>© {currentYear} Quora Builders Inc. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 space-y-4 md:space-y-0">
+          <p>© {currentYear} {COMPANY.legalName}. All rights reserved. House Construction & Engineering – Kandy, Sri Lanka.</p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-gray-300 transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors duration-300">Terms of Service</a>
-            <a href="#" className="hover:text-gray-300 transition-colors duration-300">Sitemap</a>
+            <Link to="/house-construction-kandy" className="hover:text-white transition-colors">Kandy Builders</Link>
+            <Link to="/house-construction-cost-kandy" className="hover:text-white transition-colors">Construction Cost 2026</Link>
+            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
         </div>
       </div>

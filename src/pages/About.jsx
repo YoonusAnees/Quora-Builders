@@ -28,6 +28,9 @@ import {
 import SectionTitle from '../components/SectionTitle';
 import PageWrapper from '../components/PageWrapper';
 
+import SEO from '../components/SEO';
+import { COMPANY } from '../config/company';
+
 export default function About() {
   // --- STORYTELLING CHAPTER CAROUSEL STATE ---
   const [activeChapter, setActiveChapter] = useState(0);
@@ -70,72 +73,72 @@ export default function About() {
       id: "chapter-1",
       year: "2019",
       badge: "Chapter I: The Foundation",
-      title: "A Vision Forged in Precision",
-      subtitle: "From a single blueprint desk to civil engineering survey pioneers.",
+      title: "Forging Engineering Rigor in Kandy",
+      subtitle: "From local geotechnical surveys to structured residential contracting.",
       image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200",
-      quote: "Every skyscraper begins not with concrete, but with an uncompromising commitment to structural truth.",
-      speaker: "Arthur Pendelton, Founder",
+      quote: "A house in Kandy begins not with brickwork, but with understanding the slope and soil beneath.",
+      speaker: "Quora Lead Civil Engineer",
       metricValue: "3",
       metricLabel: "Founding Engineers",
-      story: "Quora Builders was founded in 2019 by three senior structural engineers who noticed a critical gap in traditional construction: communication silos between architects, site contractors, and developers. Starting with local site soil testing and seismic surveys, we established a culture where precision engineering meets complete client transparency.",
+      story: "Quora Builder was established in Akurana, Kandy by experienced civil and structural engineers who recognized a critical need in local house construction: bridging the gap between architectural blueprints, slope foundation engineering, and site execution. We established a firm commitment to zero safety incidents and fixed BOQ transparency.",
       highlights: [
-        "First geotechnical site survey contract completed with 0 errors.",
-        "Pioneered digitized site reporting for commercial clients.",
-        "Established our strict 'Zero-Safety Incident' protocol."
+        "First geotechnical site survey completed in Akurana with 100% precision.",
+        "Established specialized slope foundation engineering standards for Kandy hills.",
+        "Created transparent itemized BOQ contracts for homeowners."
       ]
     },
     {
       id: "chapter-2",
       year: "2021",
-      badge: "Chapter II: Breaking Ground",
-      title: "The Commercial Breakthrough",
-      subtitle: "Pouring 15,000 tons of reinforced steel and concrete for iconic tech hubs.",
+      badge: "Chapter II: Expanding Horizons",
+      title: "Hillside Residence Breakthroughs",
+      subtitle: "Constructing multi-storey family homes across Kandy's prime suburbs.",
       image: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1200",
-      quote: "True durability is proven under pressure. When the unexpected happens, engineering rigor prevails.",
-      speaker: "Dr. Elena Rostova, Chief Structural Engineer",
-      metricValue: "15K+",
-      metricLabel: "Tons Steel & Concrete",
-      story: "By 2021, Quora secured its first flagship multi-million-dollar commercial project: the Apex Tech Park campus. Spanning 450,000 square feet, the build required deep basement excavation beneath complex groundwater levels. Our engineering team executed continuous 48-hour concrete pours with millimetric tolerance.",
+      quote: "Steep topography is an engineering opportunity when foundations are anchored directly to bedrock.",
+      speaker: "Senior Structural Project Lead",
+      metricValue: "15+",
+      metricLabel: "Homes Constructed",
+      story: "By 2021, Quora Builder expanded operations into Peradeniya, Katugastota, and Kundasale. Our engineering team developed specialized stepped pile footings and reinforced concrete retaining walls, enabling homeowners to build luxury villas safely on steep hillside terrain.",
       highlights: [
-        "Delivered Apex Tech Park 3 weeks ahead of schedule.",
-        "Zero lost-time safety incidents across 350+ site workers.",
-        "Expanded core operations into high-density urban developments."
+        "Delivered flagship 3,200 sq ft luxury villa in Akurana ahead of deadline.",
+        "Maintained 100% zero-accident safety record across active project sites.",
+        "Expanded core operations across Kandy district suburbs."
       ]
     },
     {
       id: "chapter-3",
       year: "2023",
-      badge: "Chapter III: The Digital Pivot",
-      title: "Smart BIM & Green Materials",
-      subtitle: "Merging Building Information Modeling (BIM) with eco-friendly structural design.",
+      badge: "Chapter III: Modern Architectural Sync",
+      title: "3D BIM Drafting & Eco Building",
+      subtitle: "Combining 3D digital walkthroughs with rain-resilient building materials.",
       image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200",
-      quote: "We don't just build for today's skyline; we engineer structures that consume less energy for the next century.",
-      speaker: "Marcus Vance, Director of Field Operations",
-      metricValue: "35%",
-      metricLabel: "Embodied Carbon Saved",
-      story: "Recognizing the environmental responsibility of modern construction, Quora fully integrated 4D Digital Twin Building Information Modeling (BIM) across all project phases. By using low-carbon basalt reinforcement bars, recycled aggregate blends, and smart thermal glazing, we cut structural material waste by over a third.",
+      quote: "We design homes optimized for Kandy's hill country climate, natural lighting, and heavy rainfall.",
+      speaker: "Principal Architectural Designer",
+      metricValue: "100%",
+      metricLabel: "Council Approval Rate",
+      story: "To streamline local authority approvals, Quora integrated full 3D Building Information Modeling (BIM) drafting. Homeowners can preview their complete residence in 3D prior to breaking ground, ensuring spatial harmony, solar shading, and rainwater harvesting efficiency.",
       highlights: [
-        "Achieved LEED Gold certification on 6 major commercial buildings.",
-        "Implemented real-time IoT load sensors during beam placement.",
-        "Integrated AI-assisted drone surveying for daily safety checks."
+        "Achieved 100% approval rate for Kandy Municipal & Council permit submissions.",
+        "Integrated subterranean gravel drainage and geotextile moisture barriers.",
+        "Pioneered custom teak timber and titanium floor finishes."
       ]
     },
     {
       id: "chapter-4",
       year: "2025+",
-      badge: "Chapter IV: Skyline Horizons",
-      title: "Defining Tomorrow's Landmarks",
-      subtitle: "Over 20+ major completed developments and a nationwide construction footprint.",
+      badge: "Chapter IV: Excellence & Beyond",
+      title: "Kandy's Trusted Home Builder",
+      subtitle: "25+ completed residential developments and active sites across Kandy.",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
-      quote: "When clients walk into a Quora-built landmark, they feel the permanence, the craft, and the vision.",
-      speaker: "Arthur Pendelton, Founder",
-      metricValue: "20+",
-      metricLabel: "Landmarks Delivered",
-      story: "Today, Quora Builders stands as a premier engineering and general contracting firm operating across the region. With over \$120M in active pipeline projects, our team continues to push boundaries in high-rise towers, luxury mixed-use complexes, and resilient public infrastructure.",
+      quote: "When clients walk into a Quora-built residence, they experience durability, elegance, and peace of mind.",
+      speaker: "Quora Executive Management",
+      metricValue: "25+",
+      metricLabel: "Completed Landmarks",
+      story: "Today, Quora Builder stands as a leading house construction and structural engineering firm in Kandy, Sri Lanka. With active project sites in Digana, Ampitiya, Kadugannawa, and Katugastota, our team continues to build durable, beautiful homes engineered for generations.",
       highlights: [
-        "Over 5 Million square feet of structural builds delivered.",
-        "100% on-time project completion rate maintained.",
-        "Expanded into sustainable mass-timber hybrid architectures."
+        "Over 25 completed luxury and family residences across Kandy.",
+        "Maintained 100% on-time handover record.",
+        "Comprehensive 10-year structural warranty on all foundation works."
       ]
     }
   ];
@@ -157,39 +160,39 @@ export default function About() {
   const blueprintStages = [
     {
       phase: "01",
-      title: "Geotechnical Analysis & Excavation",
-      subtitle: "Mapping soil composition, bedrock depth, and foundational load tolerance.",
+      title: "Geotechnical Analysis & Soil Drilling",
+      subtitle: "Mapping soil composition, bedrock depth, and foundation load tolerance.",
       image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800",
       icon: Ruler,
-      stat: "120ft Bedrock Anchors",
-      description: "Before a single beam is delivered, deep seismic core drills and radar mapping evaluate foundation dynamics to prevent settling or structural shifting over decades."
+      stat: "Geotechnical Core Drills",
+      description: "Before foundation work begins, core drills and topographical mapping evaluate soil load-bearing capacity to prevent foundation settling or earth shifts."
     },
     {
       phase: "02",
-      title: "Steel Skeleton & Load Assembly",
-      subtitle: "Erecting high-tensile structural steel frames with laser-guided precision.",
+      title: "Foundation & Retaining Walls",
+      subtitle: "Constructing stepped pile footings and reinforced concrete retaining walls.",
       image: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=800",
       icon: HardHat,
-      stat: "Grade 60 Structural Steel",
-      description: "Master welders and crane operators erect heavy steel girders. Every joint is ultrasonic-tested to withstand high seismic loads and hurricane wind shear."
+      stat: "Grade 30 Structural Concrete",
+      description: "Stepped concrete footings and retaining walls with weep hole drainage systems are constructed to secure hillside plots against heavy monsoon rains."
     },
     {
       phase: "03",
-      title: "Smart Facade & Envelope Enclosure",
-      subtitle: "Installing low-E double glazed curtain walls and smart climate insulation.",
+      title: "Superstructure & Roof Enclosure",
+      subtitle: "Erecting columns, brick masonry, and timber/steel roof structures.",
       image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800",
       icon: Layers,
-      stat: "R-30 Thermal Efficiency",
-      description: "The exterior skin is engineered with dynamic thermal barriers and automated solar shading that reduces building HVAC energy demand by up to 40%."
+      stat: "High-Tensile Rebar Steel",
+      description: "Columns and masonry walls are erected with high-grade cement and reinforced steel. Roof trusses and waterproofing membranes enclose the building envelope."
     },
     {
       phase: "04",
-      title: "Turnkey Handover & Facility Sync",
-      subtitle: "Final micro-inspection, zero-defect audit, and digital twin delivery.",
+      title: "Turnkey Finishing & Key Handover",
+      subtitle: "Tiling, teak door joinery, utility testing, and final quality audit.",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
       icon: CheckCircle2,
-      stat: "Zero Defect Guarantee",
-      description: "We hand over the keys alongside a fully interactive 3D digital model of all electrical, plumbing, and structural components for seamless long-term facility management."
+      stat: "100% Quality Punch-List",
+      description: "Final micro-inspections, utility wiring checks, titanium/porcelain tile polishing, and keys handover alongside complete structural warranty documentation."
     }
   ];
 
@@ -216,31 +219,31 @@ export default function About() {
       icon: Handshake,
       title: "Mutual Integrity",
       tag: "Transparent Terms",
-      description: "We adhere strictly to budget estimates, maintain open transparent site updates, and build long-term relationships with developers."
+      description: "We adhere strictly to budget estimates, maintain open transparent site updates, and build long-term relationships with homeowners."
     }
   ];
 
   const team = [
     {
-      name: "Arthur Pendelton",
-      role: "CEO & Founder",
-      bio: "With over 25 years of civil engineering and construction management experience, Arthur oversees Quora's long-term corporate growth, engineering standards, and vision.",
+      name: "Engineering Division",
+      role: "Chartered Civil & Structural Engineers",
+      bio: "Our lead civil engineering team oversees geotechnical soil testing, foundation design on sloped land, structural calculations, and CIDA compliance.",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400",
-      philosophy: "Building trust takes years, but building to last takes unyielding standards."
+      philosophy: "Precision structural engineering is the true bedrock of every home in Kandy."
     },
     {
-      name: "Dr. Elena Rostova",
-      role: "Chief Structural Engineer",
-      bio: "Elena holds a PhD in Structural Design from MIT. She leads our technical division, ensuring every steel girder, concrete pour, and seismic joint is engineered to perfection.",
+      name: "Architectural Planning Team",
+      role: "Architectural & 3D BIM Designers",
+      bio: "Our architectural team specializes in custom 2D floor plans, 3D walkthroughs, and submission drawings for Kandy Municipal Council and Pradeshiya Sabhas.",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
-      philosophy: "Precision is not an option; it's the foundation of structural safety."
+      philosophy: "We design homes that embrace Kandy's natural landscape, sunlight, and ventilation."
     },
     {
-      name: "Marcus Vance",
-      role: "Director of Field Operations",
-      bio: "Marcus has managed over 120 residential and commercial builds. He supervises safety officers, site managers, equipment logistics, and material supply chain channels.",
+      name: "Field Operations Division",
+      role: "Project Managers & Site Supervisors",
+      bio: "Our site managers supervise daily concrete pours, brickwork alignment, material testing, safety protocols, and weekly client progress reports.",
       image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
-      philosophy: "Execution on the ground is where blueprints turn into living landmarks."
+      philosophy: "On-site discipline and transparent communication ensure timely key handovers."
     }
   ];
 
@@ -249,6 +252,11 @@ export default function About() {
 
   return (
     <PageWrapper>
+      <SEO
+        title="About Quora Builder | Civil & Structural Engineering in Kandy"
+        description="Learn about Quora Builder's history, structural engineering standards, and commitment to custom house construction across Kandy, Sri Lanka."
+        canonical="/about"
+      />
       {/* ----------------------------------------------------
           1. SUB-HERO HEADER WITH STORY TEASER
       ---------------------------------------------------- */}

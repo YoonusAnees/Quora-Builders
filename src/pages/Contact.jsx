@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Plus, Minus } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Plus, Minus, MessageSquare } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import ContactForm from '../components/ContactForm';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
+import { COMPANY } from '../config/company';
 
 export default function Contact() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -11,46 +13,50 @@ export default function Contact() {
   const contactDetails = [
     {
       icon: MapPin,
-      title: "Our Headquarters",
-      details: "Quora Builders, Akurana 20850"
+      title: "Headquarters & Office",
+      details: COMPANY.address.formatted,
+      link: COMPANY.googleMapsEmbed
     },
     {
       icon: Phone,
-      title: "Phone Numbers",
-      details: "Main Office: +94 77 302 0979"
+      title: "Direct Telephones",
+      details: COMPANY.phone,
+      link: `tel:${COMPANY.phoneRaw}`
     },
     {
       icon: Mail,
       title: "Email Inquiries",
-      details: "Quorabuilders@gmail.com"
+      details: COMPANY.email,
+      link: `mailto:${COMPANY.email}`
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: "Monday - Thursday: 8:00 AM - 6:00 PM / Saturday - Sunday: 8:00 AM - 6:00 PM"
+      details: COMPANY.openingHours,
+      link: null
     }
   ];
 
   const faqs = [
     {
-      question: "What areas does Quora Builders service?",
-      answer: "We are headquartered in New York but maintain licensed operations and active project sites across NY, NJ, CT, and PA. For large-scale commercial or industrial development, we deploy nationwide."
+      question: "What service areas does Quora Builder cover in Kandy?",
+      answer: "We are headquartered in Akurana, Kandy and construct residential houses across Kandy City, Peradeniya, Katugastota, Kundasale, Ampitiya, Digana, and Kadugannawa."
     },
     {
-      question: "Do you handle building permits and local zoning board applications?",
-      answer: "Yes, our team handles all structural engineering documentation, zoning board filings, municipal council permits, and environment impact applications. We handle the bureaucracy so your build stays on timeline."
+      question: "Do you handle Kandy Municipal Council & Pradeshiya Sabha approvals?",
+      answer: "Yes, our team handles all structural engineering documentation, land survey blueprints, council filings, and NBRO stability reports required for building permits in Kandy."
     },
     {
-      question: "Can you construct projects according to green building/LEED guidelines?",
-      answer: "Absolutely. We have multiple LEED-accredited project managers on staff. We specialize in selecting recycled structural steel, installing solar tiles, implementing greywater filters, and optimizing insulation for low energy loads."
+      question: "How do you handle house foundation engineering on steep Kandy hillside plots?",
+      answer: "We conduct geotechnical core drilling to assess soil load-bearing capacity and design stepped concrete footings and reinforced retaining walls with subterranean drainage."
     },
     {
-      question: "How do you handle cost estimations and material price fluctuations?",
-      answer: "We use sophisticated estimation software that integrates real-time material price indexes. We offer transparent Cost-Plus or Fixed-Price contracts. Once a bid is locked, we buy core steel and concrete early to protect against inflation."
+      question: "How do you protect home owners against material price inflation?",
+      answer: "We provide itemized Bill of Quantities (BOQ) with fixed-price contracts. Core steel and cement contracts are locked early to prevent cost overruns."
     },
     {
-      question: "Are you fully licensed, bonded, and insured?",
-      answer: "Yes. Quora Builders is a fully licensed general contractor, carries a $10M liability insurance bond, and provides workers' compensation coverage for all field operations. Proof of compliance is shared during pre-construction meetings."
+      question: "Are you fully licensed and insured?",
+      answer: "Yes, Quora Builder operates strictly in compliance with ICTAD/CIDA building standards and carries comprehensive site liability insurance for all construction operations."
     }
   ];
 
@@ -58,8 +64,28 @@ export default function Contact() {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <PageWrapper>
+      <SEO
+        title="Contact Quora Builder | Kandy Office & Consultation"
+        description="Contact Quora Builder in Akurana, Kandy. Call +94 77 302 0979 or email Quorabuilders@gmail.com for house construction consultations, BOQ estimates, and site assessments."
+        canonical="/contact"
+        schema={faqSchema}
+      />
+
       {/* Sub-Hero Header */}
       <section className="relative bg-primary text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none select-none"
@@ -69,13 +95,13 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left space-y-4">
           <div className="flex justify-center md:justify-start items-center space-x-2">
             <span className="w-8 h-1 bg-accent rounded" />
-            <span className="text-accent uppercase tracking-widest text-xs font-bold">Get In Touch</span>
+            <span className="text-accent uppercase tracking-widest text-xs font-bold">Kandy Office</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Contact <span className="text-accent">Us</span>
           </h1>
           <p className="text-gray-300 max-w-2xl text-sm md:text-base leading-relaxed font-medium">
-            Have questions about bids, site planning, or need an engineering estimate? Reach out to our Metropolis office today.
+            Have questions about house construction costs, plot site assessments, or architectural plans? Reach out to our Akurana office today.
           </p>
         </div>
       </section>
@@ -84,13 +110,14 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
             {/* Contact Details Column */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <h2 className="text-3xl font-extrabold text-primary tracking-tight">Connect With Our Office</h2>
+                <h2 className="text-3xl font-extrabold text-primary tracking-tight">Connect With Our Kandy Office</h2>
                 <div className="h-1 bg-accent w-16 mt-2 rounded" />
                 <p className="text-neutral-muted text-sm leading-relaxed mt-4">
-                  For general contractor partnerships, architect integrations, or site consultations, use our details below. Or drop by our Metropolis headquarters.
+                  For house construction inquiries, site visits, or architectural plan consultations, contact Quora Builder using our details below or drop by our Akurana office.
                 </p>
               </div>
 
@@ -110,10 +137,29 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-extrabold text-primary text-sm tracking-tight mb-1">{detail.title}</h3>
-                      <p className="text-neutral-muted text-xs md:text-sm leading-relaxed">{detail.details}</p>
+                      {detail.link ? (
+                        <a href={detail.link} className="text-neutral-dark font-medium text-xs md:text-sm hover:text-accent transition-colors">
+                          {detail.details}
+                        </a>
+                      ) : (
+                        <p className="text-neutral-muted text-xs md:text-sm leading-relaxed">{detail.details}</p>
+                      )}
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* WhatsApp CTA */}
+              <div className="pt-2">
+                <a
+                  href={COMPANY.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-lg shadow-md transition-colors text-sm w-full"
+                >
+                  <MessageSquare className="h-5 w-5" />
+                  <span>Chat on WhatsApp ({COMPANY.phone})</span>
+                </a>
               </div>
             </div>
 
@@ -129,21 +175,13 @@ export default function Contact() {
       <section className="bg-neutral-light border-t border-b border-gray-100">
         <div className="w-full h-[450px] relative p-4">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.7100260696093!2d80.6165344!3d7.386356300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3433a138503cf%3A0x85fe28ffc22e94f7!2sQuora%20Builders!5e0!3m2!1sen!2slk!4v1783049209123!5m2!1sen!2slk"
-            className="w-full h-full border-0 "
+            src={COMPANY.googleMapsEmbed}
+            className="w-full h-full border-0 rounded-lg"
             allowFullScreen=""
             loading="lazy"
-            title="Quora Builders Office Location Map"
+            title="Quora Builders Akurana Kandy Office Location Map"
             referrerPolicy="no-referrer-when-downgrade"
           />
-          {/* Floating Marker Card */}
-          {/* <div className="absolute top-8 left-8 bg-primary/95 text-white p-5 rounded-lg border border-primary-light shadow-2xl hidden md:block max-w-sm">
-            <h4 className="font-extrabold text-accent text-sm tracking-wider uppercase mb-1">Our Location</h4>
-            <p className="font-bold text-base mb-1">Quora Builders Plaza</p>
-            <p className="text-gray-300 text-xs leading-relaxed">
-              123 Construction Boulevard, Suite 500, Metropolis, NY 10001
-            </p>
-          </div> */}
         </div>
       </section>
 

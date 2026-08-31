@@ -10,6 +10,8 @@ import {
   Users,
   Mail,
   FileText,
+  MapPin,
+  Calculator
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/Logo.webp";
@@ -33,8 +35,10 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", path: "/", icon: Home },
+    { name: "Kandy", path: "/house-construction-kandy", icon: MapPin },
     { name: "Projects", path: "/projects", icon: Building2 },
     { name: "Services", path: "/services", icon: Wrench },
+    { name: "Costs", path: "/house-construction-cost-kandy", icon: Calculator },
     { name: "About", path: "/about", icon: Users },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
@@ -122,13 +126,13 @@ export default function Navbar() {
               </div>
 
               {/* Desktop Get Quote */}
-              <Link
+              {/* <Link
                 to="/contact"
                 className="h-14 px-6 rounded-md bg-[#07111f] text-yellow-400 font-black uppercase tracking-wide flex items-center gap-2 shadow-xl hover:bg-yellow-500 hover:text-[#07111f] transition-all duration-300"
               >
                 <FileText className="h-5 w-5" />
                 Get Quote
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
