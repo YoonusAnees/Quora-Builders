@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const pageVariants = {
@@ -24,6 +25,12 @@ const pageVariants = {
 };
 
 export default function PageWrapper({ children }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   return (
     <motion.div
       variants={pageVariants}
