@@ -59,7 +59,7 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
+
           {/* Column 1: Brand Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
@@ -73,7 +73,7 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed">
               Quora Builder is a premier house construction and structural engineering firm in Kandy, Sri Lanka. Dedicated to high-quality craftsmanship, hillside foundation stability, and transparent client relationships.
             </p>
-            
+
             {/* Socials */}
             <div className="flex space-x-4">
               {[
@@ -169,8 +169,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 space-y-4 md:space-y-0">
-          <p>© {currentYear} {COMPANY.legalName}. All rights reserved. House Construction & Engineering – Kandy, Sri Lanka.</p>
+        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-md text-gray-400 space-y-4 md:space-y-0">
+          <p>© {currentYear} {COMPANY.legalName}. All rights reserved. <div> House Construction & Engineering – Kandy, Sri Lanka.</div> </p>
           <div className="flex space-x-6">
             <Link to="/house-construction-kandy" className="hover:text-white transition-colors">Kandy Builders</Link>
             <Link to="/house-construction-cost-kandy" className="hover:text-white transition-colors">Construction Cost 2026</Link>
