@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { MapPin, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-export default function ProjectCard({ image, title, location, category, description }) {
-  return (
+export default function ProjectCard({ image, title, location, category, description, slug }) {
+  const cardContent = (
     <motion.div
       layout // Smooth transitions during filtering
       initial={{ opacity: 0, scale: 0.95 }}
@@ -10,7 +11,7 @@ export default function ProjectCard({ image, title, location, category, descript
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4 }}
       whileHover="hover"
-      className="relative rounded-lg overflow-hidden h-[380px] bg-primary group shadow-md cursor-pointer"
+      className="relative rounded-lg overflow-hidden h-[380px] bg-primary group shadow-md cursor-pointer w-full"
     >
       {/* Background Image */}
       <motion.img
@@ -19,14 +20,15 @@ export default function ProjectCard({ image, title, location, category, descript
         }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         src={image}
-        alt={title}
+        alt={`Project ${title} in ${location} by Quora Builder`}
         className="w-full h-full object-cover select-none"
+        loading="lazy"
       />
 
-      {/* Default Overlay gradient for safety */}
+      {/* Default Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent z-10" />
 
-      {/* Overlay Details (Hidden by default, shown/animated on hover) */}
+      {/* Overlay Details */}
       <div className="absolute inset-0 z-20 p-6 flex flex-col justify-end text-white">
         <span className="text-accent uppercase tracking-widest text-xs font-extrabold mb-1">
           {category}
@@ -57,7 +59,7 @@ export default function ProjectCard({ image, title, location, category, descript
         </div>
       </div>
 
-      {/* Zoom Icon indicator */}
+      {/* Zoom / View indicator */}
       <motion.div
         variants={{
           hover: { opacity: 1, scale: 1 }
@@ -70,4 +72,10 @@ export default function ProjectCard({ image, title, location, category, descript
       </motion.div>
     </motion.div>
   );
+
+  if (slug) {
+    return <Link to={`/projects/${slug}`} className="block w-full">{cardContent}</Link>;
+  }
+
+  return cardContent;
 }

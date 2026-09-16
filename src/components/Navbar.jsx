@@ -10,14 +10,17 @@ import {
   Users,
   Mail,
   FileText,
+  MapPin,
+  Calculator
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import logo from "../assets/Logo.webp";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -33,14 +36,22 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", path: "/", icon: Home },
+    { name: "Kandy", path: "/house-construction-kandy", icon: MapPin },
     { name: "Projects", path: "/projects", icon: Building2 },
     { name: "Services", path: "/services", icon: Wrench },
+    { name: "Costs", path: "/house-construction-cost-kandy", icon: Calculator },
     { name: "About", path: "/about", icon: Users },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
 
   return (
     <>
+      {/* Top Gold Scroll Progress Bar (Mobile/Tablet View Only - Hidden on Desktop) */}
+      <motion.div
+        style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
+        className="lg:hidden fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-400 z-[100] shadow-md pointer-events-none"
+      />
+
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
           ? "bg-white/95 shadow-xl backdrop-blur-xl"
@@ -122,13 +133,13 @@ export default function Navbar() {
               </div>
 
               {/* Desktop Get Quote */}
-              <Link
+              {/* <Link
                 to="/contact"
                 className="h-14 px-6 rounded-md bg-[#07111f] text-yellow-400 font-black uppercase tracking-wide flex items-center gap-2 shadow-xl hover:bg-yellow-500 hover:text-[#07111f] transition-all duration-300"
               >
                 <FileText className="h-5 w-5" />
                 Get Quote
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

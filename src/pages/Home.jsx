@@ -3,109 +3,68 @@ import { Link } from 'react-router-dom';
 import CountUpModule from "react-countup";
 const CountUp = CountUpModule.default || CountUpModule;
 
-import { HardHat, ShieldCheck, Clock, Users, ArrowRight, CheckCircle2, Star } from 'lucide-react';
+import { HardHat, ShieldCheck, Clock, Users, ArrowRight, CheckCircle2, Star, MapPin, Calculator, Building2, Home as HomeIcon, Wrench } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import SectionTitle from '../components/SectionTitle';
 import ServiceCard from '../components/ServiceCard';
 import ProjectCard from '../components/ProjectCard';
 import PageWrapper from '../components/PageWrapper';
-
-// Services mapping
-import { Building2, Home as HomeIcon, Wrench } from 'lucide-react';
+import SEO from '../components/SEO';
+import { COMPANY, PROJECTS, SERVICES, LOCATIONS } from '../config/company';
+import heroImg from '../assets/Hero.jpg';
+import aboutImg from '../assets/aboutquora.png';
 
 export default function Home() {
-  // Features list for About preview
   const aboutPoints = [
-    "Safety compliance adhering strictly to OSHA and ISO certifications.",
-    "Certified estimators providing accurate, transparent cost assessments.",
-    "Eco-friendly, sustainable construction practices and green-building designs.",
-    "Fully licensed, bonded, and insured general contractors."
+    "Specialized structural foundation engineering on Kandy's sloped plots.",
+    "Certified civil & structural engineers adhering to CIDA/ICTAD guidelines.",
+    "Eco-friendly, climate-resilient construction practices for high monsoon rainfall.",
+    "Full transparency with itemized fixed-line BOQ price locks."
   ];
 
-  // Services preview list
-  const servicesData = [
-    {
-      title: "Commercial Development",
-      description: "From corporate towers to shopping malls, we deliver state-of-the-art commercial infrastructures constructed for efficiency, flexibility, and design excellence.",
-      icon: Building2
-    },
-    {
-      title: "Residential Architecture",
-      description: "We build custom luxury homes, modern residential complexes, and sustainable apartment communities tailored exactly to lifestyle requirements.",
-      icon: HomeIcon
-    },
-    {
-      title: "Industrial & Renovation",
-      description: "Modernizing vintage structural foundations, retrofitting industrial facilities, and restoring historical elements with state-of-the-art building techniques.",
-      icon: Wrench
-    }
-  ];
-
-  // Projects preview list
-  const projectsData = [
-    {
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
-      title: "Vanguard Corporate Hub",
-      location: "Metropolis Plaza, NY",
-      category: "Commercial",
-      description: "A 45-story commercial steel-and-glass tower featuring sustainable geothermal heating and advanced smart automation integrations."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800",
-      title: "Aura Lakeside Estates",
-      location: "Lakeview, WA",
-      category: "Residential",
-      description: "A luxury private villa complex featuring heavy timber framing, smart solar roof configurations, and custom energy-efficient envelope designs."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
-      title: "Apex Industrial Retrofit",
-      location: "Detroit Logistics Park, MI",
-      category: "Industrial",
-      description: "Structural modernization of a 150,000 sq ft logistics facility, integrating steel column reinforcing and seismic damping retrofits."
-    }
-  ];
-
-  // Why choose us points
   const whyChooseUsData = [
     {
       icon: ShieldCheck,
-      title: "Uncompromising Safety",
-      description: "We implement rigorous zero-accident safety strategies, providing a secure environment for site crews and local neighborhoods."
+      title: "Hill Country Engineering",
+      description: "Stepped pile footings and concrete retaining walls engineered for Kandy's steep terrain and clay/rock soil."
     },
     {
       icon: Clock,
-      title: "On-Time Handover",
-      description: "Using advanced critical path scheduling systems, we ensure all milestones are checked and projects are delivered exactly as promised."
+      title: "100% On-Time Handover",
+      description: "Structured project management ensuring milestones, concrete curing, and finishing are completed strictly on schedule."
     },
     {
       icon: Users,
-      title: "Elite Engineering Team",
-      description: "Our staff comprises award-winning architects, professional structural engineers, and LEED-certified project managers."
+      title: "Chartered Engineers & Architects",
+      description: "In-house design team delivering custom 3D architectural plans and Municipal/Council clearance drawings."
     },
     {
       icon: HardHat,
-      title: "Precision Management",
-      description: "Continuous quality monitoring ensures that materials, welding, pouring, and finishing adhere to the highest engineering standards."
+      title: "Quality Construction Materials",
+      description: "Rigorous quality checks on high-tensile steel, grade 30 concrete mixes, and premium teak timber doors."
     }
   ];
 
-
   return (
     <PageWrapper>
-      {/* Parallax Hero Section */}
-      <HeroSection />
+      <SEO
+        title="House Construction & Engineering in Kandy, Sri Lanka"
+        description="Quora Builder is a top house construction company in Kandy, Sri Lanka. Specialized in custom luxury homes, sloped land foundation engineering, and turnkey building."
+        canonical="/"
+      />
 
-      {/* Statistics Section (Micro-counter mockup) */}
-      <section className="bg-primary text-white py-12 relative z-20">
+      {/* Hero Section */}
+      <HeroSection
+        title="House Construction & Engineering in Kandy"
+        subtitle="Quora Builder delivers custom luxury homes, hillside structural foundation engineering, and turnkey house construction across Kandy, Sri Lanka."
+        imageUrl={heroImg}
+      />
+
+      {/* Statistics Section */}
+      <section className="bg-primary text-white py-12 relative z-20 border-b border-primary-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { end: 20, suffix: "+", label: "Projects Completed" },
-              { end: 7, suffix: "+", label: "Years Experience" },
-              { end: 6, suffix: "+", label: "Active Sites" },
-              { end: 100, suffix: "%", label: "Safety Record" }
-            ].map((stat, i) => (
+            {COMPANY.stats.map((stat, i) => (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -115,7 +74,7 @@ export default function Home() {
                 className="space-y-1"
               >
                 <div className="text-3xl md:text-5xl font-black text-accent">
-                  <CountUp end={stat.end} duration={2.5} enableScrollSpy scrollSpyOnce />
+                  <CountUp end={stat.value} duration={2.5} enableScrollSpy scrollSpyOnce />
                   <span>{stat.suffix}</span>
                 </div>
                 <div className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider">{stat.label}</div>
@@ -129,8 +88,8 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Image Column */}
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -138,21 +97,19 @@ export default function Home() {
               className="lg:col-span-5 relative"
             >
               <div className="relative rounded-lg overflow-hidden shadow-2xl border-4 border-white">
-                <img 
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" 
-                  alt="Construction Site Overview" 
+                <img
+                  src={aboutImg}
+                  alt="House construction site in Kandy by Quora Builder"
                   className="w-full h-[450px] object-cover"
                 />
-                {/* Floating badge */}
                 <div className="absolute bottom-6 right-6 bg-accent text-primary p-6 rounded shadow-xl text-center max-w-[160px]">
-                  <div className="text-3xl font-black">15+</div>
-                  <div className="text-xs font-extrabold uppercase leading-tight mt-1">Years Building Trust</div>
+                  <div className="text-3xl font-black">7+</div>
+                  <div className="text-xs font-extrabold uppercase leading-tight mt-1">Years Building Kandy</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Content Column */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -160,19 +117,18 @@ export default function Home() {
               className="lg:col-span-7 space-y-6"
             >
               <span className="text-accent font-extrabold tracking-widest text-xs md:text-sm uppercase block">
-                WHO WE ARE
+                ABOUT QUORA BUILDER
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
-                Shaping the Skylines of Tomorrow with Integrity
+                Crafting Exceptional Homes in Kandy with Engineering Integrity
               </h2>
               <p className="text-neutral-muted text-base leading-relaxed">
-                Quora Builders is an industry leader in engineering excellence and general contracting. Over the past 15 years, we have collaborated with developers, homeowners, and public institutions to deliver complex, challenging structural feats. 
+                Quora Builder is a premier house construction and civil engineering contractor headquartered in Akurana, Kandy. We specialize in building modern single-storey, two-storey, and hillside luxury family residences.
               </p>
               <p className="text-neutral-muted text-base leading-relaxed">
-                Our approach integrates smart pre-construction analysis, state-of-the-art structural components, and high-performance logistics. We believe in building structures that last generations.
+                From initial topographical soil surveys and 3D architectural blueprints to municipal council approvals, foundation earthworks, and fine interior joinery, we manage your home construction journey with total transparency.
               </p>
-              
-              {/* Bullet list */}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {aboutPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start space-x-2.5">
@@ -182,17 +138,23 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Link */}
-              <div className="pt-4">
+              <div className="pt-4 flex flex-wrap gap-4">
                 <Link
                   to="/about"
-                  className="inline-flex items-center bg-primary hover:bg-primary-light text-white font-bold py-3 px-6 rounded transition-colors duration-300 shadow-md group text-sm cursor-pointer"
+                  className="inline-flex items-center bg-primary hover:bg-primary-light text-white font-bold py-3 px-6 rounded transition-colors duration-300 shadow-md group text-sm"
                 >
-                  <span>Learn More About Us</span>
-                  <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300 text-accent" />
+                  <span>Learn More About Quora Builder</span>
+                  <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform text-accent" />
+                </Link>
+                <Link
+                  to="/house-construction-kandy"
+                  className="inline-flex items-center bg-accent hover:bg-accent-hover text-primary font-bold py-3 px-6 rounded transition-colors duration-300 shadow-md text-sm"
+                >
+                  <span>Kandy House Construction Guide</span>
                 </Link>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -200,20 +162,29 @@ export default function Home() {
       {/* Services Preview Section */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle 
-            subtitle="WHAT WE BUILD" 
-            title="Our Premier Construction Services" 
+          <SectionTitle
+            subtitle="OUR CORE CAPABILITIES"
+            title="House Construction & Engineering Services in Kandy"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {servicesData.map((service, idx) => (
-              <ServiceCard
-                key={idx}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                delay={idx * 0.1}
-              />
+            {SERVICES.slice(0, 3).map((service, idx) => (
+              <div key={idx} className="bg-neutral-light border border-gray-150 rounded-lg p-8 space-y-4 hover:border-accent transition-all flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="bg-primary text-accent p-3.5 rounded-lg inline-block">
+                    <HomeIcon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary">{service.title}</h3>
+                  <p className="text-neutral-muted text-sm leading-relaxed">{service.shortDesc}</p>
+                </div>
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="inline-flex items-center text-primary font-bold text-xs uppercase tracking-wider hover:text-accent group pt-2"
+                >
+                  <span>Explore {service.title}</span>
+                  <ArrowRight className="h-3.5 w-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             ))}
           </div>
 
@@ -229,36 +200,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Cost Guide Banner Callout */}
+      <section className="bg-primary-light text-white py-12 border-t border-b border-primary-light/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="text-accent text-xs font-black uppercase tracking-wider">TRANSPARENT ESTIMATION</span>
+            <h3 className="text-2xl md:text-3xl font-black">How Much Does It Cost to Build a House in Kandy?</h3>
+            <p className="text-gray-300 text-xs md:text-sm max-w-2xl">
+              Explore our 2026 detailed price breakdown for 2,000 sq ft houses, hillside retaining foundations, and BOQ estimation guidelines.
+            </p>
+          </div>
+          <Link
+            to="/house-construction-cost-kandy"
+            className="bg-accent hover:bg-accent-hover text-primary font-black px-6 py-3.5 rounded shadow-lg transition-colors text-sm shrink-0 flex items-center gap-2"
+          >
+            <Calculator className="h-4 w-4" />
+            <span>View Kandy Cost Guide 2026</span>
+          </Link>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section className="py-20 md:py-28 bg-primary text-white relative overflow-hidden">
-        {/* Subtle construction graphic overlays */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Title / Info Column */}
+
             <div className="lg:col-span-5 space-y-6">
               <span className="text-accent font-extrabold tracking-widest text-xs md:text-sm uppercase block">
-                OUR ENGINEERING VANTAGE
+                ENGINEERING VANTAGE
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-                Why Developers Choose Quora Builders
+                Why Property Owners Trust Quora Builder
               </h2>
               <div className="h-1 bg-accent w-24 rounded-full" />
               <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                We combine industry-leading building methodologies with absolute transparent client communication. Our structural integrity is unmatched, ensuring your investments stand tall.
+                We combine civil engineering expertise with absolute client transparency. Your home is engineered to withstand heavy rainfall, soil earth movement, and seasonal climate shifts.
               </p>
               <div className="pt-4">
                 <Link
                   to="/contact"
-                  className="bg-accent hover:bg-accent-hover text-primary font-black px-6 py-3.5 rounded shadow-lg transition-colors duration-300 text-sm cursor-pointer"
+                  className="bg-accent hover:bg-accent-hover text-primary font-black px-6 py-3.5 rounded shadow-lg transition-colors duration-300 text-sm cursor-pointer inline-block"
                 >
-                  Consult An Engineer
+                  Consult A Kandy Engineer
                 </Link>
               </div>
             </div>
 
-            {/* Grid Benefits Column */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
               {whyChooseUsData.map((item, idx) => (
                 <motion.div
@@ -277,20 +266,50 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Local Coverage Suburbs */}
+      <section className="py-20 bg-neutral-light border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            subtitle="LOCALLY RELEVANT COVERAGE"
+            title="House Construction Across Kandy Suburbs"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {LOCATIONS.map((loc, idx) => (
+              <div key={idx} className="border border-gray-200 rounded-lg p-6 bg-white hover:border-accent transition-all space-y-3 shadow-sm">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-5 w-5 text-accent shrink-0" />
+                  <h3 className="text-lg font-bold text-primary">{loc.name}</h3>
+                </div>
+                <p className="text-neutral-muted text-xs leading-relaxed">{loc.shortDesc}</p>
+                <Link
+                  to={`/locations/${loc.slug}`}
+                  className="inline-flex items-center text-primary font-bold text-xs hover:text-accent group pt-1"
+                >
+                  <span>House Construction in {loc.name}</span>
+                  <ArrowRight className="h-3.5 w-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-20 md:py-28 bg-neutral-light">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle 
-            subtitle="OUR PORTFOLIO" 
-            title="Featured Landmarks & Builds" 
+          <SectionTitle
+            subtitle="PORTFOLIO SHOWCASE"
+            title="Real Completed Residences in Kandy"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projectsData.map((project, idx) => (
+            {PROJECTS.slice(0, 3).map((project, idx) => (
               <ProjectCard
                 key={idx}
                 image={project.image}
@@ -298,6 +317,7 @@ export default function Home() {
                 location={project.location}
                 category={project.category}
                 description={project.description}
+                slug={project.slug}
               />
             ))}
           </div>
@@ -305,36 +325,31 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               to="/projects"
-              className="inline-flex items-center bg-primary hover:bg-primary-light text-white font-bold py-3.5 px-8 rounded transition-colors duration-300 shadow-md group text-sm cursor-pointer"
+              className="inline-flex items-center bg-primary hover:bg-primary-light text-white font-bold py-3.5 px-8 rounded transition-colors duration-300 shadow-md group text-sm"
             >
-              <span>View All Projects</span>
+              <span>View All Kandy Projects</span>
               <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1.5 transition-transform duration-300 text-accent" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials (Google Reviews) Section */}
-      {/* 
-        NOTE: The Elfsight script should be added once in index.html:
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-      */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* Testimonials Section */}
+      <section className="py-20 md:py-28 bg-neutral-light border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle 
-            subtitle="CLIENT SATISFACTION" 
-            title="What Our Clients Say About Us" 
+          <SectionTitle
+            subtitle="CLIENT TRUST"
+            title="What Homeowners Say About Quora Builder"
           />
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-center justify-center w-full"
           >
-            {/* Rating Summary Card */}
-            <div className="flex flex-col items-center justify-center text-center mb-12 bg-neutral-light border border-neutral-muted/10 rounded-2xl p-6 md:p-8 shadow-sm max-w-sm md:max-w-md w-full">
+            <div className="flex flex-col items-center justify-center text-center mb-12 bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm max-w-sm md:max-w-md w-full">
               <div className="flex items-center gap-1.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-6 h-6 fill-accent text-accent stroke-[1.5]" />
@@ -344,11 +359,10 @@ export default function Home() {
                 Rated 4.9 / 5
               </div>
               <div className="text-neutral-muted font-bold text-xs md:text-sm tracking-wider uppercase">
-                Based on Google Reviews
+                Based on Verified Google Reviews
               </div>
             </div>
 
-            {/* Elfsight Google Reviews Widget Container */}
             <div className="w-full">
               <div className="elfsight-app-0749d319-698e-497a-9a01-f2b10aae7743" data-elfsight-app-lazy></div>
             </div>
@@ -358,29 +372,25 @@ export default function Home() {
 
       {/* Bottom CTA Banner */}
       <section className="bg-primary text-white py-16 border-t border-primary-light relative overflow-hidden">
-        {/* Construction Orange Glow Decorative Background */}
-        <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute left-0 top-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
-
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            Let’s Construct Your Vision
+            Ready to Build Your Home in Kandy?
           </h2>
           <p className="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Whether you require a comprehensive feasibility assessment, complex structural drawings, or full-scale general contracting, Quora Builders delivers unparalleled engineering competence.
+            Whether you need a topographical soil assessment, architectural 3D plans, or complete turnkey house construction, Quora Builder is here to bring your vision to life.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link
               to="/contact"
-              className="bg-accent hover:bg-accent-hover text-primary font-black px-8 py-3.5 rounded shadow-lg transition-colors duration-300 text-sm cursor-pointer w-full sm:w-auto"
+              className="bg-accent hover:bg-accent-hover text-primary font-black px-8 py-3.5 rounded shadow-lg transition-colors duration-300 text-sm w-full sm:w-auto"
             >
-              Get Free Quote Now
+              Get Free BOQ Quote
             </Link>
             <Link
-              to="/services"
-              className="border-2 border-white/20 hover:border-white text-white font-bold px-8 py-3.5 rounded transition-all duration-300 text-sm cursor-pointer w-full sm:w-auto"
+              to="/house-construction-kandy"
+              className="border-2 border-white/20 hover:border-white text-white font-bold px-8 py-3.5 rounded transition-all duration-300 text-sm w-full sm:w-auto"
             >
-              Learn Our Process
+              Kandy Local Construction Guide
             </Link>
           </div>
         </div>
