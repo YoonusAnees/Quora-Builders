@@ -16,10 +16,11 @@ import LocationDetail from './pages/LocationDetail';
 import CostGuide from './pages/CostGuide';
 import GuideDetail from './pages/GuideDetail';
 import NotFound from './pages/NotFound';
+import QuoraBuildersLoader from './components/QuoraBuildersLoader';
 
 function AnimatedRoutes() {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -46,10 +47,11 @@ function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-neutral-light font-sans text-neutral-dark antialiased">
         <Navbar />
-        {/* Main Content Area */}
-        <main className="grow">
-          <AnimatedRoutes />
-        </main>
+        <QuoraBuildersLoader>
+          <main className="grow">
+            <AnimatedRoutes />
+          </main>
+        </QuoraBuildersLoader>
         <Footer />
       </div>
     </Router>

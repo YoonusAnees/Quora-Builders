@@ -11,6 +11,8 @@ import ProjectCard from '../components/ProjectCard';
 import PageWrapper from '../components/PageWrapper';
 import SEO from '../components/SEO';
 import { COMPANY, PROJECTS, SERVICES, LOCATIONS } from '../config/company';
+import heroImg from '../assets/Hero.jpg';
+import aboutImg from '../assets/aboutquora.png';
 
 export default function Home() {
   const aboutPoints = [
@@ -55,7 +57,7 @@ export default function Home() {
       <HeroSection
         title="House Construction & Engineering in Kandy"
         subtitle="Quora Builder delivers custom luxury homes, hillside structural foundation engineering, and turnkey house construction across Kandy, Sri Lanka."
-        imageUrl="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070"
+        imageUrl={heroImg}
       />
 
       {/* Statistics Section */}
@@ -86,7 +88,7 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +98,7 @@ export default function Home() {
             >
               <div className="relative rounded-lg overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+                  src={aboutImg}
                   alt="House construction site in Kandy by Quora Builder"
                   className="w-full h-[450px] object-cover"
                 />
@@ -126,7 +128,7 @@ export default function Home() {
               <p className="text-neutral-muted text-base leading-relaxed">
                 From initial topographical soil surveys and 3D architectural blueprints to municipal council approvals, foundation earthworks, and fine interior joinery, we manage your home construction journey with total transparency.
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {aboutPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start space-x-2.5">
@@ -164,7 +166,7 @@ export default function Home() {
             subtitle="OUR CORE CAPABILITIES"
             title="House Construction & Engineering Services in Kandy"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {SERVICES.slice(0, 3).map((service, idx) => (
               <div key={idx} className="bg-neutral-light border border-gray-150 rounded-lg p-8 space-y-4 hover:border-accent transition-all flex flex-col justify-between">
@@ -224,7 +226,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             <div className="lg:col-span-5 space-y-6">
               <span className="text-accent font-extrabold tracking-widest text-xs md:text-sm uppercase block">
                 ENGINEERING VANTAGE
