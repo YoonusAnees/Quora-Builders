@@ -13,13 +13,14 @@ import {
   MapPin,
   Calculator
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import logo from "../assets/Logo.webp";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -45,6 +46,12 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Top Gold Scroll Progress Bar (Mobile/Tablet View Only - Hidden on Desktop) */}
+      <motion.div
+        style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
+        className="lg:hidden fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-400 z-[100] shadow-md pointer-events-none"
+      />
+
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
           ? "bg-white/95 shadow-xl backdrop-blur-xl"
