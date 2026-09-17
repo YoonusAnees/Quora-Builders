@@ -169,8 +169,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-md text-gray-400 space-y-4 md:space-y-0">
-          <p>© {currentYear} {COMPANY.legalName}. All rights reserved. <div> House Construction & Engineering – Kandy, Sri Lanka.</div> </p>
+        <div className="mt-12 pt-8 border-t border-primary-light/50 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 space-y-4 md:space-y-0">
+          <div className="text-center max-sm:w-full">© {currentYear} {COMPANY.legalName}. All rights reserved. House Construction & Engineering – Kandy, Sri Lanka.</div>
           <div className="flex space-x-6">
             <Link to="/house-construction-kandy" className="hover:text-white transition-colors">Kandy Builders</Link>
             <Link to="/house-construction-cost-kandy" className="hover:text-white transition-colors">Construction Cost 2026</Link>
