@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Quora Builders - Ultra-Smooth Interactive Construction Page Transition
+   Hardware-accelerated 120fps motion with Blueprint Grid & Surveyor Theodolite HUD
+   ========================================================================== */
+
+.cpt-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 99998;
+  overflow: hidden;
+  user-select: none;
+  cursor: crosshair;
+  pointer-events: auto;
+}
+
+/* 5 Structural Foundation Concrete & Steel Pillars */
+.cpt-columns-container {
+  position: absolute;
+  inset: 0;
+  width: calc(100% + 5px);
+  height: 100%;
+  display: flex;
+}
+
+.cpt-column {
+  flex: 1;
+  height: 100%;
+  background: linear-gradient(180deg, #07111f 0%, #0b192c 50%, #07111f 100%);
+  border-right: 1px solid rgba(255, 178, 0, 0.18);
+  margin-right: -1px; /* Prevents subpixel gaps on Retina/High-DPI displays */
+  position: relative;
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cpt-column:last-child {
+  border-right: none;
+}
+
+/* Gold leading beam foot at the bottom of each column */
+.cpt-column::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ca8a04 0%, #ffb200 50%, #ca8a04 100%);
+  box-shadow: 0 0 14px rgba(255, 178, 0, 0.8), 0 0 28px rgba(255, 178, 0, 0.4);
+}
+
+/* Gold top beam when retracting into foundation */
+.cpt-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ca8a04 0%, #ffb200 50%, #ca8a04 100%);
+  box-shadow: 0 0 14px rgba(255, 178, 0, 0.8);
+}
+
+/* Ruler markings on each column edge */
+.cpt-column-ruler {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.cpt-tick {
+  width: 6px;
+  height: 1px;
+  background-color: #ffb200;
+}
+
+.cpt-tick.is--lg {
+  width: 12px;
+  height: 1.5px;
+  background-color: #ffb200;
+  box-shadow: 0 0 4px rgba(255, 178, 0, 0.6);
+}
+
+/* Blueprint Grid Background */
+.cpt-blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 178, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 178, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Laser Scanning Line */
+.cpt-laser-scanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 178, 0, 0) 0%,
+    rgba(255, 178, 0, 0.8) 25%,
+    #ffffff 50%,
+    rgba(255, 178, 0, 0.8) 75%,
+    rgba(255, 178, 0, 0) 100%
+  );
+  box-shadow: 0 0 16px #ffb200, 0 0 32px rgba(255, 178, 0, 0.6);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  will-change: transform, top;
+}
+
+/* Center Engineering HUD */
+.cpt-hud-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  padding: 24px;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  will-change: transform, opacity;
+}
+
+.cpt-hud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(11, 25, 44, 0.9);
+  border: 1px solid rgba(255, 178, 0, 0.45);
+  border-radius: 9999px;
+  color: #ffb200;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.cpt-hud-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffb200;
+  box-shadow: 0 0 8px #ffb200;
+  animation: cptPulse 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes cptPulse {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.25); opacity: 1; }
+}
+
+.cpt-hud-target-title {
+  font-size: clamp(1.8rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+}
+
+.cpt-hud-target-title span {
+  color: #ffb200;
+}
+
+.cpt-hud-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cpt-telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Interactive Surveyor Laser Crosshairs following cursor */
+.cpt-crosshair-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 178, 0, 0.25);
+  pointer-events: none;
+  z-index: 15;
+  will-change: top;
+}
+
+.cpt-crosshair-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 178, 0, 0.25);
+  pointer-events: none;
+  z-index: 15;
+  will-change: left;
+}
+
+.cpt-surveyor-reticle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(255, 178, 0, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(255, 178, 0, 0.35);
+  margin-left: -26px;
+  margin-top: -26px;
+  will-change: transform;
+}
+
+.cpt-reticle-inner-dot {
+  width: 6px;
+  height: 6px;
+  background: #ffb200;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffb200;
+}
+
+.cpt-coordinates-tooltip {
+  position: absolute;
+  left: 36px;
+  top: -12px;
+  white-space: nowrap;
+  background: rgba(11, 25, 44, 0.92);
+  border: 1px solid rgba(255, 178, 0, 0.5);
+  color: #ffb200;
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Click Ripple Pulse Wave */
+.cpt-click-pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ffb200;
+  transform: translate(-50%, -50%) scale(0.2);
+  pointer-events: none;
+  z-index: 20;
+  animation: cptRipple 0.65s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+@keyframes cptRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(5.5);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cpt-hud-target-title {
+    font-size: 1.5rem;
+  }
+  .cpt-hud-telemetry {
+    font-size: 0.65rem;
+    gap: 10px;
+  }
+  .cpt-column-ruler {
+    display: none;
+  }
+}

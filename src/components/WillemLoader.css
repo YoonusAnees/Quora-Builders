@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.willem-loader-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 99999;
+  overflow: hidden;
+  background-color: #f7f7f8;
+  font-family: 'PP Neue Montreal', 'Inter', system-ui, sans-serif;
+  user-select: none;
+  pointer-events: auto;
+  transition: opacity 0.65s cubic-bezier(0.65, 0, 0.35, 1), transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.willem-loader-wrapper.is--exiting {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.willem-loader-stage {
+  color: #0b192c;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.willem__h1 {
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.85rem, 5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1;
+  display: flex;
+  position: relative;
+  letter-spacing: 0.04em;
+}
+
+.willem__h1-start {
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  min-width: max-content;
+  display: flex;
+  overflow: hidden;
+  color: #0b192c;
+}
+
+.willem__h1-end {
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  min-width: max-content;
+  display: flex;
+  overflow: hidden;
+  color: #ca8a04;
+  /* Quora signature gold */
+}
+
+.willem__letter {
+  display: inline-block;
+  position: relative;
+}
+
+.willem-loader__box {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 0.28em;
+  display: flex;
+  position: relative;
+  margin: 0 0.04em;
+}
+
+.willem-loader__box-inner {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.35em;
+  display: flex;
+  position: relative;
+}
+
+.willem__growing-image {
+  justify-content: center;
+  align-items: center;
+  width: 0%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+}
+
+.willem__logo-wrap {
+  width: 1.35em;
+  height: 1.35em;
+  min-width: 1.35em;
+  min-height: 1.35em;
+  border-radius: 50%;
+  /* background: #ffffff; */
+  /* box-shadow: 0 6px 24px rgba(11, 25, 44, 0.12), 0 0 0 2px rgba(202, 138, 4, 0.35); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12em;
+  box-sizing: border-box;
+}
+
+.willem__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}

@@ -1,45 +1,48 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1], // Custom premium easeOutExpo cubic-bezier
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import gsap from "gsap";
 
 export default function PageWrapper({ children }) {
+  const containerRef = useRef(null);
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Reset scroll instantly with zero layout stutter
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-  }, []);
+
+    // New page content glides upward into view as the pillars retract downwards
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        container,
+        {
+          opacity: 0,
+          y: 28,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          delay: 0.28,
+          clearProps: "transform",
+        }
+      );
+    }, container);
+
+    return () => ctx.revert();
+  }, [location.pathname]);
 
   return (
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="w-full min-h-screen pt-20 flex flex-col justify-between"
+    <div
+      ref={containerRef}
+      className="w-full min-h-screen pt-20 flex flex-col justify-between will-change-transform"
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
