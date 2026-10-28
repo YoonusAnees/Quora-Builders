@@ -5,7 +5,7 @@ import "./ConstructionPageTransition.css";
 
 const ROUTE_TITLES = {
   "/": "SITE OVERVIEW",
-  "/about": "ABOUT US // ENGINEERING INTEGRITY",
+  "/about": "ENGINEERING INTEGRITY",
   "/services": "CORE SERVICES ",
   "/projects": "PORTFOLIO ",
   "/contact": "SITE CONSULTATION ",
