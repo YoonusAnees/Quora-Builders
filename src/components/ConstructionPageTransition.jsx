@@ -4,13 +4,13 @@ import gsap from "gsap";
 import "./ConstructionPageTransition.css";
 
 const ROUTE_TITLES = {
-  "/": "SITE OVERVIEW // HOME",
+  "/": "SITE OVERVIEW",
   "/about": "ABOUT US // ENGINEERING INTEGRITY",
-  "/services": "CORE SERVICES // HOUSE CONSTRUCTION",
-  "/projects": "PORTFOLIO // COMPLETED RESIDENCES",
-  "/contact": "SITE CONSULTATION // INQUIRY",
-  "/house-construction-kandy": "KANDY SITES // HILLSIDE FOUNDATIONS",
-  "/house-construction-cost-kandy": "COST GUIDE // BOQ ESTIMATION",
+  "/services": "CORE SERVICES ",
+  "/projects": "PORTFOLIO ",
+  "/contact": "SITE CONSULTATION ",
+  "/house-construction-kandy": "HILLSIDE FOUNDATIONS",
+  "/house-construction-cost-kandy": "COST GUIDE ",
 };
 
 export default function ConstructionPageTransition() {
@@ -343,7 +343,7 @@ export default function ConstructionPageTransition() {
       {/* Center Engineering Telemetry HUD */}
       <div className="cpt-hud-container">
         <div className="cpt-hud-badge">
-          <span className="cpt-hud-badge-dot" />
+          {/* <span className="cpt-hud-badge-dot" /> */}
           <span>QUORA BUILDERS • STRUCTURAL TELEMETRY</span>
         </div>
 
