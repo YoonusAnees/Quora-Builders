@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import WillemLoader from './components/WillemLoader';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -16,7 +17,6 @@ import LocationDetail from './pages/LocationDetail';
 import CostGuide from './pages/CostGuide';
 import GuideDetail from './pages/GuideDetail';
 import NotFound from './pages/NotFound';
-import QuoraBuildersLoader from './components/QuoraBuildersLoader';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -45,15 +45,15 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-neutral-light font-sans text-neutral-dark antialiased">
-        <Navbar />
-        <QuoraBuildersLoader>
+      <WillemLoader>
+        <div className="flex flex-col min-h-screen bg-neutral-light font-sans text-neutral-dark antialiased">
+          <Navbar />
           <main className="grow">
             <AnimatedRoutes />
           </main>
-        </QuoraBuildersLoader>
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </WillemLoader>
     </Router>
   );
 }
